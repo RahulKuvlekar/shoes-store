@@ -1,11 +1,4 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  FaUserAlt,
-  FaShoppingCart,
-  FaHeart,
-  FaRegUserCircle,
-} from "react-icons/fa";
 import { HiOutlineShoppingCart, HiOutlineHeart } from "react-icons/hi";
 import { BiUser, BiSearchAlt } from "react-icons/bi";
 import "./NavigationBar.css";
@@ -77,7 +70,7 @@ const NavigationBar = () => {
               </NavLink>
             </li>
             <li className="list-inline-item">
-              <NavLink to="/cart" className={`nav-icon-btn`}>
+              <NavLink to="/profile" className={`nav-icon-btn`}>
                 <span className="nav-icon">
                   <BiUser />
                 </span>
