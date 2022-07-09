@@ -20,7 +20,6 @@
 }
 a {
   text-decoration: none;
-  color: #ffffff;
 }
 ul {
   list-style: none;
@@ -73,6 +72,7 @@ a {
   flex-flow: row;
   align-items: center;
 }
+
 input[type="checkbox"],
 input[type="radio"],
 input[type="range"] {
@@ -163,4 +163,15 @@ input[type="range"] {
 .userProfile-link:hover {
   border-bottom: 1px solid var(--grey-color-medium);
   margin-bottom: -1px;
+}
+
+.link-success {
+  color: var(--success-color);
+  text-decoration-color: var(--success-color);
+  text-decoration-thickness: 2px;
+}
+.link-success:hover {
+  color: var(--success-hover);
+  text-decoration-color: var(--success-hover);
+  text-decoration-thickness: 3px;
 }
