@@ -1,0 +1,50 @@
+/* Style Overides */
+.list .list-title {
+  border-bottom: none;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+button.btn-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Products */
+.products {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  margin: auto;
+  grid-template-columns: 250px 1fr;
+  gap: 0;
+}
+
+.product-heading {
+  display: none;
+}
+
+@media all and (max-width: 670px) {
+  .products {
+    grid-template-columns: 1fr;
+    grid-template-rows: 80vh max-content;
+  }
+  .deactive {
+    display: none;
+  }
+  .product-heading {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1rem;
+    font-size: 1.8rem;
+    color: var(--grey-color-dark);
+    position: sticky;
+    top: 10vh;
+    z-index: 99;
+    border-bottom: 1px solid var(--grey-color-light);
+  }
+}
