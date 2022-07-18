@@ -1,0 +1,93 @@
+.card-container {
+  position: relative;
+  width: 300px;
+  justify-self: stretch;
+  box-shadow: rgba(9, 30, 66, 0.13) 0px 0.5px 0.5px,
+    #091e4221 0px 0px 0.5px 0.5px;
+  cursor: default;
+}
+.card-img {
+  min-height: 230px;
+  max-height: 230px;
+  object-fit: contain;
+}
+.card-img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.card-title {
+  min-height: 52px;
+  max-height: 52px;
+}
+.card-title:hover {
+  -webkit-text-decoration: underline var(--grey-color-medium) solid 2px;
+  text-decoration: underline var(--grey-color-medium) solid 2px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.card-badge-danger {
+  opacity: 0.8;
+}
+.card-btn-wishlist {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background-color: transparent;
+  color: var(--grey-color-dark);
+  border: none;
+}
+/* Card Prices */
+.card-price .price-now {
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding-right: 5px;
+}
+.card-price .price-before {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: line-through;
+  padding-right: 5px;
+  color: var(--grey-color-medium);
+}
+.card-price .price-discount {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding-right: 0;
+  color: var(--danger-color);
+}
+/* Card Buttons */
+.card-btn-wishlist .btn-icon {
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+.card-btn-wishlist .btn-icon:hover {
+  color: #ff3f6c;
+  transition: color 0.2s ease-in;
+}
+.card-btn-wishlist .btn-icon:active {
+  color: #ff3f6c;
+  background-color: #ff3f6c39;
+  border-radius: 50%;
+}
+.card-btn-wishlist .btn-icon.fa-pink {
+  color: #ff3f6c;
+}
+
+.card-overlay-content {
+  top: 25%;
+  padding: 0 0.5rem;
+  text-transform: capitalize;
+  background-color: #ffff;
+  transition: opacity 0.2s ease-in;
+}
+.card-other {
+  display: flex;
+  flex-flow: row;
+  margin: 0.4rem 0 0 0;
+  align-items: center;
+  justify-content: space-between;
+}
