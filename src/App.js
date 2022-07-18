@@ -11,6 +11,8 @@ import MyProfile from "./Pages/Profile/MyProfile";
 import Profile from "./Pages/Profile/Profile";
 import MyAddress from "./Pages/Profile/MyAddress";
 import Setting from "./Pages/Profile/Setting";
+import Products from "./Pages/Products/Products";
+import ViewProduct from "./Pages/ViewProduct/ViewProduct";
 
 function App() {
   const { pathname } = useLocation();
@@ -36,6 +38,8 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<ViewProduct />} />
       </Routes>
     </div>
   );
