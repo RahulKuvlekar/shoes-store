@@ -1,7 +1,7 @@
 :root {
   --primary-color-light: #e6e6ff;
-  --primary-color: #ff56a2;
-  --primary-hover: #fc74b1;
+  --primary-color: #222;
+  --primary-hover: #333;
   --bg-dark: #0a0a0a;
   --bg-dark-hover: #353535;
   --grey-color-light: #b3b2b2;
@@ -49,7 +49,8 @@ body::-webkit-scrollbar,
 .category-section::-webkit-scrollbar,
 .login::-webkit-scrollbar,
 .signup::-webkit-scrollbar,
-.postListing-section::-webkit-scrollbar {
+.products-listing-section::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
   display: none;
 }
 
@@ -60,9 +61,29 @@ body,
 .category-section,
 .login,
 .signup,
-.postListing-section {
+.products-listing-section,
+.sidebar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/* Custom Scrollbar */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  display: contents;
+}
+.custom-scrollbar {
+  -ms-overflow-style: unset; /* IE and Edge */
+  scrollbar-width: 5px; /* Firefox */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--grey-color-dark);
 }
 
 button,
@@ -76,7 +97,7 @@ a {
 input[type="checkbox"],
 input[type="radio"],
 input[type="range"] {
-  accent-color: var(--primary-color);
+  accent-color: var(--grey-color-dark);
 }
 .page-title {
   width: 100%;
@@ -165,6 +186,16 @@ input[type="range"] {
   margin-bottom: -1px;
 }
 
+.link-default {
+  color: var(--default-color);
+  text-decoration-color: var(--default-color);
+  text-decoration-thickness: 2px;
+}
+.link-default:hover {
+  color: var(--grey-color-medium);
+  text-decoration-color: var(--grey-color-medium);
+  text-decoration-thickness: 2px;
+}
 .link-success {
   color: var(--success-color);
   text-decoration-color: var(--success-color);
@@ -174,4 +205,7 @@ input[type="range"] {
   color: var(--success-hover);
   text-decoration-color: var(--success-hover);
   text-decoration-thickness: 3px;
+}
+.display-none {
+  display: none;
 }
