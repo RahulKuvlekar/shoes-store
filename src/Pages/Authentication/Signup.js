@@ -10,8 +10,15 @@ import {
   updateUserProfile,
 } from "../../Utils/authentication";
 import { createToast } from "../../Utils/toast";
-import { ADD_TOAST, DANGER, INFO } from "../../Constant/constant";
+import {
+  ADD_TOAST,
+  DANGER,
+  INFO,
+  SHOES_STORE_USER,
+} from "../../Constant/constant";
 import { useToastContext } from "../../Hooks/useToastContext";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../Config/InitFirebase";
 
 const Signup = () => {
   const INITIAL_VAL = {
@@ -101,6 +108,15 @@ const Signup = () => {
           currentUser?.user,
           formValue?.firstName + " " + formValue?.lastName
         );
+
+        const ref = doc(db, SHOES_STORE_USER, currentUser?.user?.uid);
+        await setDoc(ref, {
+          uid: currentUser?.user?.uid,
+          displayName: formValue?.firstName + " " + formValue?.lastName,
+          email: currentUser?.user?.email,
+          photoURL: currentUser?.user?.photoURL,
+          phoneNumber: currentUser?.user?.phoneNumber,
+        });
       }
     } catch (error) {
       setFormError((prev) => ({ ...prev, signUpError: error.message }));

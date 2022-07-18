@@ -107,6 +107,7 @@ const Login = () => {
       resetHandler();
     }
 
+    return () => resetHandler();
     // eslint-disable-next-line
   }, [isSubmit]);
 
