@@ -1,0 +1,14 @@
+.products-listing-section {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.products-listing-section .product-listing {
+  padding: 2rem;
+  width: 100%;
+  background-color: white;
+  grid-template-columns: repeat(auto-fill, 270px);
+  justify-content: space-evenly;
+  row-gap: 2rem;
+}
