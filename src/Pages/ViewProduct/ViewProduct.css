@@ -1,0 +1,83 @@
+.viewProduct-section {
+  display: flex;
+  flex-flow: row;
+}
+
+.viewProduct-imageSection {
+  width: 50%;
+  position: relative;
+}
+
+.viewProduct-description {
+  width: 50%;
+  padding: 0 2rem;
+  position: relative;
+  cursor: default;
+}
+
+.viewProduct-description hr {
+  border: 0.1px solid #ebe9e9;
+}
+.viewProduct-title {
+  margin: 0.5rem 0;
+}
+.viewProduct-subtitle {
+  margin: 0 0 0.25rem 0;
+  color: var(--grey-color-medium);
+  display: inline;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.viewProduct-priceSection {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-end;
+  margin: 0.5rem 0;
+}
+.viewProduct-price-now {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--grey-color-dark);
+  margin-right: 0.5rem;
+}
+.viewProduct-price-before {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--grey-color-medium);
+  text-decoration: line-through;
+  margin-right: 0.5rem;
+}
+.viewProduct-discount {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--danger-color);
+}
+.viewProduct-taxes {
+  color: var(--success-color);
+  margin-bottom: 1rem;
+}
+.viewProduct-productDescription {
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--grey-color-dark);
+  margin: 1rem 0;
+}
+.viewProduct-info {
+  margin: 1rem 0;
+}
+.viewProduct-info svg {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+.viewProduct-info p {
+  font-size: 1.2rem;
+  color: var(--grey-color-medium);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  margin: 0 0 0.5rem 0;
+}
+.flip-image {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}

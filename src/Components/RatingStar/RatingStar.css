@@ -1,0 +1,9 @@
+.ratingStar-section {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.fa-solid,
+.fa-regular {
+  color: #ffb400;
+}

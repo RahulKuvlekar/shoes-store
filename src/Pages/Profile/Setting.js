@@ -34,7 +34,7 @@ const Setting = () => {
   return (
     <React.Fragment>
       <h1 className="profile-title">Setting</h1>
-      <button className="btn signout" onClick={signOutHandler}>
+      <button className="btn signout btn-noShadow" onClick={signOutHandler}>
         Logout
       </button>
     </React.Fragment>

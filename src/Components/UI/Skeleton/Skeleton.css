@@ -1,0 +1,56 @@
+.cardSkeleton {
+  width: 270px;
+  padding: 0.5rem;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 0.5px 0.5px,
+    rgba(9, 30, 66, 0.13) 0px 0px 0.5px 0.5px;
+}
+
+.cardSkeleton div {
+  width: 100%;
+  background-color: var(--grey-color-light);
+  margin-bottom: 1rem;
+  animation: cardSkeleton-animation 2s ease infinite alternate;
+}
+
+.cardSkeleton-img {
+  height: 210px;
+}
+.cardSkeleton-heading {
+  height: 30px;
+}
+.cardSkeleton-price {
+  height: 30px;
+}
+.cardSkeleton-other {
+  height: 30px;
+}
+.cardSkeleton .cardSkeleton-btn {
+  height: 40px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.bannerSkeleton {
+  width: 100%;
+  height: 90vh;
+  background-color: #000;
+  animation: banner-animation 2s ease infinite alternate;
+}
+
+/* Animations */
+@keyframes cardSkeleton-animation {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+@keyframes banner-animation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.95;
+  }
+}

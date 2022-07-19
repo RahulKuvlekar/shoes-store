@@ -44,6 +44,7 @@
 
 .profile-main .signout {
   margin-left: 1.6rem;
+  box-shadow: none;
 }
 .profile-description {
   padding: 1.6rem;
