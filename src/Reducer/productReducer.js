@@ -1,5 +1,10 @@
 import {
+  ADD_PRODUCTS,
+  ADD_TO_CART,
+  ADD_TO_WISHLIST,
   CLEAR_FILTERS,
+  REMOVE_FROM_CART,
+  REMOVE_FROM_WISHLIST,
   SORT_BY_BRAND,
   SORT_BY_CATEGORY,
   SORT_BY_OTHER,
@@ -11,6 +16,8 @@ import { INITIAL_STATE } from "../Context/ProductContext";
 
 export const productReducer = (prev, action) => {
   switch (action.type) {
+    case ADD_PRODUCTS:
+      return { ...prev, products: action.payload };
     case SORT_BY_PRICE:
       return { ...prev, price: action.payload };
     case SORT_BY_PRICE_RANGE:
@@ -42,8 +49,39 @@ export const productReducer = (prev, action) => {
             other: [...prev.other.filter((other) => other !== action.payload)],
           }
         : { ...prev, other: [...prev.other, action.payload] };
+
+    case ADD_TO_CART:
+      return { ...prev, myCart: [...prev.myCart, action.payload] };
+    case REMOVE_FROM_CART:
+      return {
+        ...prev,
+        myCart: [
+          ...prev.myCart.filter(
+            (product) => product.productId !== action.payload
+          ),
+        ],
+      };
+    case ADD_TO_WISHLIST:
+      return { ...prev, myWishlist: [...prev.myWishlist, action.payload] };
+    case REMOVE_FROM_WISHLIST:
+      return {
+        ...prev,
+        myWishlist: [
+          ...prev.myCart.filter(
+            (product) => product.productId !== action.payload
+          ),
+        ],
+      };
     case CLEAR_FILTERS:
-      return INITIAL_STATE;
+      return {
+        ...prev,
+        price: null,
+        priceRange: 200000,
+        rating: null,
+        category: [],
+        brand: [],
+        other: [],
+      };
     default:
       return INITIAL_STATE;
   }
