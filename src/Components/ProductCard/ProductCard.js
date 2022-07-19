@@ -1,20 +1,19 @@
 import React from "react";
 import RatingStar from "../RatingStar/RatingStar";
 import "./ProductCard.css";
-import { useNavigate, useLocation } from "react-router-dom";
-import { getDiscountedPrice } from "../../Utils/products";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const {
     productId,
     title,
     subtitle,
-    Description,
     image,
     featured,
     inStock,
     price,
     discount,
+    discountedPrice,
     rating,
     fastDelivery,
   } = product;
@@ -60,15 +59,9 @@ const ProductCard = ({ product }) => {
             {title}
           </h3>
         )}
-        {subtitle && (
-          <p className="card-text">
-            {subtitle.toUpperCase()} {Description ? `| ${Description}` : null}
-          </p>
-        )}
+        {subtitle && <p className="card-text">{subtitle.toUpperCase()}</p>}
         <div className="card-price">
-          <span className="price-now">
-            Rs.{getDiscountedPrice(price, discount)}
-          </span>
+          <span className="price-now">Rs.{discountedPrice}</span>
           <span className="price-before"> Rs.{price} </span>
           {discount && (
             <span className="price-discount"> ({discount}% OFF) </span>
