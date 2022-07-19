@@ -19,11 +19,11 @@ import "./ProductFilters.css";
 import { useProductContext } from "../../Hooks/useProductContext";
 
 const ProductFilters = () => {
-  const { filterState, dispatchFilter } = useProductContext();
-  const { price, priceRange, rating, category, brand, other } = filterState;
+  const { productState, dispatchProduct } = useProductContext();
+  const { price, priceRange, rating, category, brand, other } = productState;
 
   const dispatchFilterHandler = (type, data) =>
-    dispatchFilter({
+    dispatchProduct({
       type: type,
       payload: data,
     });
@@ -87,7 +87,10 @@ const ProductFilters = () => {
               className="slider"
               id="myRange"
               onChange={(e) =>
-                dispatchFilterHandler(SORT_BY_PRICE_RANGE, e.target.value)
+                dispatchFilterHandler(
+                  SORT_BY_PRICE_RANGE,
+                  Number(e.target.value)
+                )
               }
             />
           </div>

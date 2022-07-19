@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
 
 export const priceFilter = [
-  { name: "Low to High", value: "price-low", id: uuid() },
-  { name: "High to Low", value: "price-high", id: uuid() },
+  { name: "Low to High", value: "Low to High", id: uuid() },
+  { name: "High to Low", value: "High to Low", id: uuid() },
 ];
 
 export const ratingFilter = [
