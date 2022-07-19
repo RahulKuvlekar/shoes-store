@@ -2,6 +2,9 @@ import { createContext, useReducer } from "react";
 import { productReducer } from "../Reducer/productReducer";
 
 export const INITIAL_STATE = {
+  products: [],
+  myCart: [],
+  myWishlist: [],
   price: null,
   priceRange: 200000,
   rating: null,
@@ -11,18 +14,18 @@ export const INITIAL_STATE = {
 };
 
 const ProductContext = createContext({
-  filterState: INITIAL_STATE,
-  dispatchFilter: Function,
+  productState: INITIAL_STATE,
+  dispatchProduct: Function,
 });
 
 const ProductProvider = ({ children }) => {
-  const [filterState, dispatchFilter] = useReducer(
+  const [productState, dispatchProduct] = useReducer(
     productReducer,
     INITIAL_STATE
   );
 
   return (
-    <ProductContext.Provider value={{ filterState, dispatchFilter }}>
+    <ProductContext.Provider value={{ productState, dispatchProduct }}>
       {children}
     </ProductContext.Provider>
   );
