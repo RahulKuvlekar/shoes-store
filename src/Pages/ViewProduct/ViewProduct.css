@@ -1,7 +1,6 @@
 .viewProduct-section {
   display: flex;
   flex-flow: row;
-  align-items: center;
 }
 
 .viewProduct-imageSection {
@@ -11,9 +10,11 @@
 
 .viewProduct-description {
   width: 50%;
-  position: relative;
   padding: 0 2rem;
+  position: relative;
+  cursor: default;
 }
+
 .viewProduct-description hr {
   border: 0.1px solid #ebe9e9;
 }

@@ -16,6 +16,7 @@ import {
   FaRegCalendarTimes,
 } from "react-icons/fa";
 import RatingStar from "../../Components/RatingStar/RatingStar";
+import Skeleton from "../../Components/UI/Skeleton/Skeleton";
 
 const ViewProduct = () => {
   const { productId } = useParams();
@@ -51,6 +52,7 @@ const ViewProduct = () => {
 
   return (
     <div className="main-section viewProduct-section ">
+      {isLoading && <Skeleton type="Loader" />}
       <div className="viewProduct-imageSection">
         {productImagesData?.length > 0 && (
           <ProductImageSlider data={productImagesData} />
@@ -104,11 +106,11 @@ const ViewProduct = () => {
           <span className="viewProduct-btns">
             <button className="btn btn-primary">
               Add to cart
-              <i class="btn-icon-after fas fa-shopping-cart"></i>
+              <i className="btn-icon-after fas fa-shopping-cart"></i>
             </button>
             <button className="btn btn-warning">
               Add to Wishlist
-              <i class="btn-icon-after fas fa-heart"></i>
+              <i className="btn-icon-after fas fa-heart"></i>
             </button>
           </span>
         </div>
