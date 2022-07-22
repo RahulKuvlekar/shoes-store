@@ -72,7 +72,7 @@ const AddressCard = ({ item }) => {
       >
         <input
           type="radio"
-          name={`${item.street}, ${item.city}, ${item.state}, ${item.country}, ${item.zipcode} `}
+          name="address"
           id={item.addressId}
           value={item.addressId}
           checked={item.isSelected ? true : false}

@@ -1,0 +1,48 @@
+.order-card {
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.order-card .order-status {
+  color: var(--success-color);
+  font-weight: 800;
+}
+.order-card .text-grey-lt,
+.order-card .text-grey-md {
+  margin: 0.2rem 0;
+}
+.order-card .order-delivery {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.order-card .order-minicard {
+  display: flex;
+  flex-flow: row;
+  position: relative;
+  justify-self: stretch;
+  box-shadow: rgba(9, 30, 66, 0.13) 0px 0.5px 0.5px,
+    #091e4221 0px 0px 0.5px 0.5px;
+  cursor: default;
+  margin: 0.5rem 0;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.order-card .order-minicard .order-img {
+  width: 100px;
+}
+.order-card .order-minicard .order-pricesection {
+  display: flex;
+  flex-flow: row;
+  gap: 0.5rem;
+}
+.order-minicard .order-pricesection .order-price {
+  text-decoration: line-through;
+  color: var(--grey-color-light);
+  font-weight: normal;
+}
+.order-minicard .order-pricesection .order-discount {
+  color: var(--danger-color);
+}

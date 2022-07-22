@@ -3,6 +3,8 @@ import { productReducer } from "../Reducer/productReducer";
 import { useAuthContext } from "../Hooks/useAuthContext";
 import { getMyCart, getMyWishlist } from "../Utils/products";
 import { SET_MY_CART, SET_MY_WISHLIST } from "../Constant/constant";
+import { useToastContext } from "../Hooks/useToastContext";
+import { getUserAddress } from "../Utils/address";
 
 export const INITIAL_STATE = {
   products: [],
@@ -23,7 +25,8 @@ const ProductContext = createContext({
 });
 
 const ProductProvider = ({ children }) => {
-  const { isAuthenticated, userInfo } = useAuthContext();
+  const { isAuthenticated, userInfo, setUserAddress } = useAuthContext();
+  const { dispatchToast } = useToastContext();
   const [productState, dispatchProduct] = useReducer(
     productReducer,
     INITIAL_STATE
@@ -44,9 +47,15 @@ const ProductProvider = ({ children }) => {
     dispatchProduct({ type: SET_MY_WISHLIST, payload: {} });
   };
 
+  const getMyAddress = async () => {
+    if (!isAuthenticated) return;
+    getUserAddress(userInfo, setUserAddress, dispatchToast);
+  };
+
   useEffect(() => {
     getAllMyCart();
     getAllMyWishlist();
+    getMyAddress();
 
     // eslint-disable-next-line
   }, [isAuthenticated]);

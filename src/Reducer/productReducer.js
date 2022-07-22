@@ -2,6 +2,7 @@ import {
   ADD_PRODUCTS,
   ADD_TO_CART,
   ADD_TO_WISHLIST,
+  CLEAR_CART,
   CLEAR_FILTERS,
   DECREMENT_CART_QUANTITY,
   INCREMENT_CART_QUANTITY,
@@ -114,6 +115,8 @@ export const productReducer = (prev, action) => {
         },
       };
     }
+    case CLEAR_CART:
+      return { ...prev, myCart: {} };
 
     case CLEAR_FILTERS:
       return {
