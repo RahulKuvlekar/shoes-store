@@ -1,0 +1,88 @@
+.address-modal .input-group {
+  margin: 0 auto 0.5rem;
+}
+.address-modal .input-group input {
+  color: var(--grey-color-medium);
+  letter-spacing: 0.1rem;
+  background-color: #f8f8f8;
+}
+
+.address-modal .input-group input:focus {
+  outline: 2px solid var(--grey-color-medium);
+  border: 1px solid transparent;
+}
+.list .list-collapsable.address-card {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  max-width: 350px;
+  padding: 0.5rem 0;
+}
+.address-card-listing {
+  margin: 1rem 0;
+}
+.address-section {
+  padding: 0.5rem;
+  width: 90%;
+  position: relative;
+  max-width: 660px;
+  justify-self: stretch;
+  box-shadow: rgb(9 30 66 / 13%) 0px 0.5px 0.5px, #091e4221 0px 0px 0.5px 0.5px;
+  border-radius: 0.3rem;
+  cursor: default;
+}
+
+.address-card input {
+  margin-top: 0.18rem;
+}
+.address-btn {
+  display: flex;
+  flex-flow: row;
+}
+
+.address-label {
+  color: var(--grey-color-medium);
+  cursor: pointer;
+}
+.address-label h4,
+.address-label p {
+  color: var(--grey-color-medium);
+}
+
+.address-btn svg {
+  font-size: 1.2rem;
+  margin: 0 0 0 0.5rem;
+  cursor: pointer;
+}
+.btn-addNewAddess {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--grey-color-medium);
+  background-color: #fff;
+  border: 2px dashed var(--grey-color-light);
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.btn-addNewAddess:hover {
+  border: 2px solid var(--grey-color-light);
+  opacity: 0.8;
+  transition: opacity 0.4s ease-out;
+}
+.btn-changeAddress {
+  color: #fff;
+  background-color: var(--grey-color-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+}
+.btn-changeAddress:hover {
+  color: #fff;
+  background-color: var(--grey-color-darkest);
+}

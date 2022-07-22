@@ -13,6 +13,8 @@ import MyAddress from "./Pages/Profile/MyAddress";
 import Setting from "./Pages/Profile/Setting";
 import Products from "./Pages/Products/Products";
 import ViewProduct from "./Pages/ViewProduct/ViewProduct";
+import Cart from "./Pages/Cart/Cart";
+import Wishlist from "./Pages/Wishlist/Wishlist";
 
 function App() {
   const { pathname } = useLocation();
@@ -40,6 +42,22 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ViewProduct />} />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

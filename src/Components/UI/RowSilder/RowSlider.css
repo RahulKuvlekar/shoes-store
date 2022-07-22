@@ -59,4 +59,5 @@
 }
 .card-slider .row-slider-container {
   align-items: center;
+  justify-content: center;
 }

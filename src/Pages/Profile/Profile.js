@@ -10,7 +10,7 @@ const menu = [
 ];
 const Profile = () => {
   return (
-    <div>
+    <div className="main-section custom-scrollbar">
       <h1 className="page-title page-title-center">Account</h1>
       <div className="profile-section">
         <ul className="profile-sidebar">

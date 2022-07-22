@@ -77,6 +77,10 @@
   color: #ff3f6c;
 }
 
+.card-container .btn-container {
+  margin: auto;
+}
+
 .card-overlay-content {
   top: 25%;
   padding: 0 0.5rem;

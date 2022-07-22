@@ -7,12 +7,15 @@ const AuthContext = createContext({
   userInfo: Object,
   userLoading: Boolean,
   setUserLoading: () => {},
+  userAddress: Array,
+  setUserAddress: () => {},
 });
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userLoading, setUserLoading] = useState(null);
+  const [userAddress, setUserAddress] = useState([]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,7 +33,14 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ userInfo: user, isAuthenticated, userLoading, setUserLoading }}
+      value={{
+        userInfo: user,
+        isAuthenticated,
+        userLoading,
+        setUserLoading,
+        userAddress,
+        setUserAddress,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -50,7 +50,8 @@ body::-webkit-scrollbar,
 .login::-webkit-scrollbar,
 .signup::-webkit-scrollbar,
 .products-listing-section::-webkit-scrollbar,
-.sidebar::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar,
+.price-section .item-list::-webkit-scrollbar {
   display: none;
 }
 
@@ -62,7 +63,8 @@ body,
 .login,
 .signup,
 .products-listing-section,
-.sidebar {
+.sidebar,
+.price-section .item-list {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }

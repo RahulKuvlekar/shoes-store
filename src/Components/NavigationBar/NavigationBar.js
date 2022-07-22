@@ -2,8 +2,20 @@ import { NavLink } from "react-router-dom";
 import { HiOutlineShoppingCart, HiOutlineHeart } from "react-icons/hi";
 import { BiUser, BiSearchAlt } from "react-icons/bi";
 import "./NavigationBar.css";
+import { useProductContext } from "../../Hooks/useProductContext";
 
 const NavigationBar = () => {
+  const {
+    productState: { myCart, myWishlist },
+  } = useProductContext();
+
+  const cartCount = Object.values(myCart)?.reduce(
+    (prev, curr) => prev + curr.quantity,
+    0
+  );
+
+  const wishlistCount = Object.values(myWishlist)?.length;
+
   return (
     <header className="nav-bar">
       <nav className="nav-bar-container">
@@ -56,14 +68,22 @@ const NavigationBar = () => {
               </button>
             </li>
             <li className="list-inline-item">
-              <NavLink to="/wishlist" className={`nav-icon-btn`}>
+              <NavLink
+                to="/wishlist"
+                className={`nav-icon-btn ${wishlistCount ? "nav-badge" : ""}`}
+                data-count={wishlistCount}
+              >
                 <span className="nav-icon">
                   <HiOutlineHeart />
                 </span>
               </NavLink>
             </li>
             <li className="list-inline-item">
-              <NavLink to="/cart" className={`nav-icon-btn`}>
+              <NavLink
+                to="/cart"
+                className={`nav-icon-btn ${cartCount ? "nav-badge" : ""}`}
+                data-count={cartCount}
+              >
                 <span className="nav-icon">
                   <HiOutlineShoppingCart />
                 </span>

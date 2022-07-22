@@ -3,8 +3,13 @@ import {
   ADD_TO_CART,
   ADD_TO_WISHLIST,
   CLEAR_FILTERS,
+  DECREMENT_CART_QUANTITY,
+  INCREMENT_CART_QUANTITY,
   REMOVE_FROM_CART,
   REMOVE_FROM_WISHLIST,
+  SET_LOADING,
+  SET_MY_CART,
+  SET_MY_WISHLIST,
   SORT_BY_BRAND,
   SORT_BY_CATEGORY,
   SORT_BY_OTHER,
@@ -51,27 +56,65 @@ export const productReducer = (prev, action) => {
         : { ...prev, other: [...prev.other, action.payload] };
 
     case ADD_TO_CART:
-      return { ...prev, myCart: [...prev.myCart, action.payload] };
+      return {
+        ...prev,
+        myCart: {
+          ...prev.myCart,
+          [action.payload.productId]: action.payload,
+        },
+      };
     case REMOVE_FROM_CART:
-      return {
-        ...prev,
-        myCart: [
-          ...prev.myCart.filter(
-            (product) => product.productId !== action.payload
-          ),
-        ],
-      };
+      delete prev.myCart[action.payload.productId];
+      return prev;
+
     case ADD_TO_WISHLIST:
-      return { ...prev, myWishlist: [...prev.myWishlist, action.payload] };
-    case REMOVE_FROM_WISHLIST:
       return {
         ...prev,
-        myWishlist: [
-          ...prev.myCart.filter(
-            (product) => product.productId !== action.payload
-          ),
-        ],
+        myWishlist: {
+          ...prev.myWishlist,
+          [action.payload.productId]: action.payload,
+        },
       };
+    case REMOVE_FROM_WISHLIST:
+      delete prev.myWishlist[action.payload.productId];
+      return prev;
+
+    case SET_MY_CART:
+      return { ...prev, myCart: action.payload };
+
+    case SET_MY_WISHLIST:
+      return { ...prev, myWishlist: action.payload };
+
+    case SET_LOADING:
+      return { ...prev, productLoading: action.payload };
+
+    case INCREMENT_CART_QUANTITY: {
+      const PRODUCT_ID = action.payload.productId;
+      return {
+        ...prev,
+        myCart: {
+          ...prev.myCart,
+          [PRODUCT_ID]: {
+            ...prev.myCart[PRODUCT_ID],
+            quantity: prev.myCart[PRODUCT_ID].quantity + 1,
+          },
+        },
+      };
+    }
+    case DECREMENT_CART_QUANTITY: {
+      const PRODUCT_ID = action.payload.productId;
+      return {
+        ...prev,
+        myCart: {
+          ...prev.myCart,
+          [PRODUCT_ID]: {
+            ...prev.myCart[PRODUCT_ID],
+            quantity: prev.myCart[PRODUCT_ID].quantity - 1,
+          },
+        },
+      };
+    }
+
     case CLEAR_FILTERS:
       return {
         ...prev,

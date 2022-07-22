@@ -1,0 +1,57 @@
+/* price-section */
+.price-section {
+  background-color: white;
+  padding: 1rem 2rem;
+  overflow-y: auto;
+  color: var(--grey-color-dark);
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.price-section .price-title {
+  text-align: center;
+}
+.price-section .item-list {
+  /* Remove Scroll property */
+  /* height: 250px;
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: auto; */
+}
+.price-section .price-list {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.price-section .price-list span:first-child {
+  max-width: 60%;
+}
+.price-section .price-list .text-success {
+  color: var(--success-color);
+}
+.price-section .price-list .text-strike {
+  text-decoration: line-through;
+}
+
+.btn-place-order {
+  width: 100%;
+}
+.error-message {
+  display: flex;
+  color: var(--danger-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Responsiveness */
+@media all and (max-width: 875px) {
+  .cart > .price-section {
+    grid-row: 1;
+  }
+}
+
+@media all and (max-width: 525px) {
+  .price-section .price-title {
+    font-size: 1.6rem;
+  }
+}
