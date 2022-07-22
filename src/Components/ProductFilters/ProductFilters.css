@@ -2,7 +2,7 @@
 .sidebar {
   background-color: white;
   padding: 1rem 2rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   color: var(--grey-color-dark);
   border-right: 0.3px solid gainsboro;
 }
