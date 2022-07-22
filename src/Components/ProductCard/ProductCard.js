@@ -1,7 +1,17 @@
 import React from "react";
 import RatingStar from "../RatingStar/RatingStar";
 import "./ProductCard.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useProductContext } from "../../Hooks/useProductContext";
+import { useAuthContext } from "../../Hooks/useAuthContext";
+import {
+  addToMyCart,
+  addToMyWishlist,
+  getDiscountedPrice,
+  removeFromMyCart,
+  removeFromMyWishlist,
+} from "../../Utils/products";
+import SmallLoader from "../UI/SmallLoader/SmallLoader";
 
 const ProductCard = ({ product }) => {
   const {
@@ -18,13 +28,52 @@ const ProductCard = ({ product }) => {
     fastDelivery,
   } = product;
 
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const productInWishlist = false;
-  const productIsFound = false;
+  const {
+    productState: { productLoading, myCart, myWishlist },
+    dispatchProduct,
+  } = useProductContext();
+
+  const { isAuthenticated, userInfo } = useAuthContext();
+
+  const productInWishlist = myWishlist[productId] ? true : false;
+
+  const productInCart = myCart[productId] ? true : false;
 
   const viewProducthandler = () => {
     navigate(`/products/${productId}`);
+  };
+
+  const addToCartHandler = () => {
+    if (!isAuthenticated) {
+      navigate("/login", {
+        state: { from: location },
+        replace: true,
+      });
+    } else {
+      addToMyCart(dispatchProduct, product, userInfo.uid);
+    }
+  };
+
+  const removeFromCartHandler = () => {
+    removeFromMyCart(dispatchProduct, product, userInfo.uid);
+  };
+
+  const addToWishlistHandler = () => {
+    if (!isAuthenticated) {
+      navigate("/login", {
+        state: { from: location },
+        replace: true,
+      });
+    } else {
+      addToMyWishlist(dispatchProduct, product, userInfo.uid);
+    }
+  };
+
+  const removeFromWishlistHandler = () => {
+    removeFromMyWishlist(dispatchProduct, product, userInfo.uid);
   };
 
   return (
@@ -45,11 +94,19 @@ const ProductCard = ({ product }) => {
       />
       {featured && <div className="card-badge card-badge-danger">Trending</div>}
       {productInWishlist ? (
-        <button className="card-btn-wishlist">
+        <button
+          className="card-btn-wishlist"
+          onClick={removeFromWishlistHandler}
+          disabled={productLoading}
+        >
           <i className="btn-icon fa-solid fa-heart fa-pink"></i>
         </button>
       ) : (
-        <button className="card-btn-wishlist">
+        <button
+          className="card-btn-wishlist"
+          onClick={addToWishlistHandler}
+          disabled={productLoading}
+        >
           <i className="btn-icon fa-regular fa-heart"></i>
         </button>
       )}
@@ -61,8 +118,13 @@ const ProductCard = ({ product }) => {
         )}
         {subtitle && <p className="card-text">{subtitle.toUpperCase()}</p>}
         <div className="card-price">
-          <span className="price-now">Rs.{discountedPrice}</span>
-          <span className="price-before"> Rs.{price} </span>
+          <span className="price-now">
+            ₹{" "}
+            {discountedPrice
+              ? discountedPrice
+              : getDiscountedPrice(price, discount)}
+          </span>
+          <span className="price-before"> ₹{price} </span>
           {discount && (
             <span className="price-discount"> ({discount}% OFF) </span>
           )}
@@ -74,10 +136,20 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div className="btn-container">
-          {productIsFound ? (
-            <button className="btn btn-success">Go to cart</button>
+          {productInCart ? (
+            <button
+              className="btn btn-success btn-noShadow"
+              onClick={removeFromCartHandler}
+              disabled={productLoading}
+            >
+              Remove From Cart
+            </button>
           ) : (
-            <button className="btn btn-primary btn-noShadow">
+            <button
+              className="btn btn-primary btn-noShadow"
+              onClick={addToCartHandler}
+              disabled={productLoading}
+            >
               Add to cart
             </button>
           )}
