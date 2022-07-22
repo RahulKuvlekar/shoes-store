@@ -1,0 +1,22 @@
+/* Hide Scrollbar */
+.wishlist::-webkit-scrollbar {
+  display: none;
+}
+.wishlist {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.wishlist {
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  height: 80vh;
+  margin: auto;
+  overflow-y: scroll;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-evenly;
+  gap: 2rem;
+  background-color: #ffffff;
+  text-align: left;
+}
