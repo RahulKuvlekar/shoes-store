@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CartListing from "../../Components/CartListing/CartListing";
 import PricingSection from "../../Components/PricingSection/PricingSection";
 import "./Cart.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useProductContext } from "../../Hooks/useProductContext";
 import OrderSucess from "./OrderSucess";
 

@@ -12,7 +12,6 @@ import {
   addToMyCart,
   addToMyWishlist,
   getDiscountedPrice,
-  removeFromMyCart,
   removeFromMyWishlist,
 } from "../../Utils/products";
 import {

@@ -11,7 +11,6 @@ import {
   removeFromMyCart,
   removeFromMyWishlist,
 } from "../../Utils/products";
-import SmallLoader from "../UI/SmallLoader/SmallLoader";
 
 const ProductCard = ({ product }) => {
   const {
