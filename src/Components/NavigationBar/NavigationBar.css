@@ -293,7 +293,11 @@
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   }
 }
-.nav-active i,
-.nav-active svg {
-  color: var(--primary-color);
+
+.nav-pill .link-no-style.nav-active {
+  color: #ffffff;
+}
+i.nav-active,
+svg.nav-active {
+  color: #ffffff;
 }

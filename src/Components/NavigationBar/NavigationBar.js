@@ -1,6 +1,10 @@
-import { NavLink } from "react-router-dom";
-import { HiOutlineShoppingCart, HiOutlineHeart } from "react-icons/hi";
-import { BiUser, BiSearchAlt } from "react-icons/bi";
+import { NavLink, useLocation } from "react-router-dom";
+import {
+  HiOutlineHeart,
+  HiHeart,
+} from "react-icons/hi";
+import { BiSearchAlt } from "react-icons/bi";
+import { RiUser3Line, RiUser3Fill,RiShoppingCart2Line,RiShoppingCart2Fill } from "react-icons/ri";
 import "./NavigationBar.css";
 import { useProductContext } from "../../Hooks/useProductContext";
 
@@ -8,6 +12,8 @@ const NavigationBar = () => {
   const {
     productState: { myCart, myWishlist },
   } = useProductContext();
+
+  const { pathname } = useLocation();
 
   const cartCount = Object.values(myCart)?.reduce(
     (prev, curr) => prev + curr.quantity,
@@ -28,17 +34,27 @@ const NavigationBar = () => {
 
           <div className="nav-logo-title">
             <NavLink className="link-no-style nav-logo" to="/">
-              <img src="./Images/mainLogo.png" alt="hipHop" />
+              <img src="./Images/mainLogo.png" alt="ShoesStore" />
             </NavLink>
           </div>
           <ul className="nav-pill nav-menu">
             <li className="list-inline-item">
-              <NavLink to="/" className={`link-no-style`}>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? `nav-active link-no-style` : `link-no-style`
+                }
+              >
                 Home
               </NavLink>
             </li>
             <li className="list-inline-item">
-              <NavLink to="/products" className={`link-no-style`}>
+              <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  isActive ? `nav-active link-no-style` : `link-no-style`
+                }
+              >
                 Explore
               </NavLink>
             </li>
@@ -74,7 +90,11 @@ const NavigationBar = () => {
                 data-count={wishlistCount}
               >
                 <span className="nav-icon">
-                  <HiOutlineHeart />
+                  {pathname === "/wishlist" ? (
+                    <HiHeart className="nav-active" />
+                  ) : (
+                    <HiOutlineHeart />
+                  )}
                 </span>
               </NavLink>
             </li>
@@ -85,14 +105,22 @@ const NavigationBar = () => {
                 data-count={cartCount}
               >
                 <span className="nav-icon">
-                  <HiOutlineShoppingCart />
+                  {pathname === "/cart" ? (
+                    <RiShoppingCart2Fill className="nav-active" />
+                  ) : (
+                    <RiShoppingCart2Line />
+                  )}
                 </span>
               </NavLink>
             </li>
             <li className="list-inline-item">
               <NavLink to="/profile" className={`nav-icon-btn`}>
                 <span className="nav-icon">
-                  <BiUser />
+                  {pathname === "/profile" ? (
+                    <RiUser3Fill className="nav-active" />
+                  ) : (
+                    <RiUser3Line />
+                  )}
                 </span>
               </NavLink>
             </li>
