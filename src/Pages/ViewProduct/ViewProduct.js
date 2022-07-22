@@ -163,14 +163,16 @@ const ViewProduct = () => {
                 <i className="btn-icon-after fas fa-shopping-cart"></i>
               </button>
             ) : (
-              <button
-                className="btn btn-primary"
-                onClick={addToCartHandler}
-                disabled={productLoading}
-              >
-                Add to cart
-                <i className="btn-icon-after fas fa-shopping-cart"></i>
-              </button>
+              productData.inStock && (
+                <button
+                  className="btn btn-primary"
+                  onClick={addToCartHandler}
+                  disabled={productLoading}
+                >
+                  Add to cart
+                  <i className="btn-icon-after fas fa-shopping-cart"></i>
+                </button>
+              )
             )}
             {productInWishlist ? (
               <button
@@ -182,14 +184,16 @@ const ViewProduct = () => {
                 <i className="btn-icon-after fas fa-heart"></i>
               </button>
             ) : (
-              <button
-                className="btn btn-warning"
-                onClick={addToWishlistHandler}
-                disabled={productLoading}
-              >
-                Add to Wishlist
-                <i className="btn-icon-after fas fa-heart"></i>
-              </button>
+              productData.inStock && (
+                <button
+                  className="btn btn-warning"
+                  onClick={addToWishlistHandler}
+                  disabled={productLoading}
+                >
+                  Add to Wishlist
+                  <i className="btn-icon-after fas fa-heart"></i>
+                </button>
+              )
             )}
           </span>
         </div>
