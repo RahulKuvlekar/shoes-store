@@ -8,7 +8,6 @@ import {
   addToMyCart,
   addToMyWishlist,
   getDiscountedPrice,
-  removeFromMyCart,
   removeFromMyWishlist,
 } from "../../Utils/products";
 
@@ -56,8 +55,8 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  const removeFromCartHandler = () => {
-    removeFromMyCart(dispatchProduct, product, userInfo.uid);
+  const goToCartHandler = () => {
+    navigate("/cart");
   };
 
   const addToWishlistHandler = () => {
@@ -138,10 +137,10 @@ const ProductCard = ({ product }) => {
           {productInCart ? (
             <button
               className="btn btn-success btn-noShadow"
-              onClick={removeFromCartHandler}
+              onClick={goToCartHandler}
               disabled={productLoading}
             >
-              Remove From Cart
+              Go to cart
             </button>
           ) : (
             <button
