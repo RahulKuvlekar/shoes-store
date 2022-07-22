@@ -56,14 +56,20 @@ const ProductListing = () => {
   }, []);
   return (
     <div className="products-listing-section custom-scrollbar">
+      <h3 className="page-title h2 text-grey-md">
+        Showing Products ({sortedProducts.length})
+      </h3>
       <div className="product-listing grid ">
         {isLoading ? (
           <Skeleton counter={10} type="Feed" />
-        ) : (
-          sortedProducts.length > 0 &&
+        ) : sortedProducts.length > 0 ? (
           sortedProducts.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))
+        ) : (
+          <div className="cart-empty">
+            <h1 className="text-grey-dt">Oops! No product found :(</h1>
+          </div>
         )}
       </div>
     </div>
