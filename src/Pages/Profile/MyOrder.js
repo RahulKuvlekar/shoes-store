@@ -27,6 +27,7 @@ const MyOrder = () => {
         setIsLoading(false);
       }
     })();
+    return () => setOrderData([]);
     // eslint-disable-next-line
   }, []);
 
@@ -35,11 +36,20 @@ const MyOrder = () => {
       <h1 className="profile-title">Order</h1>
       <div>{isLoading && <Loader />}</div>
       <div>
-        {[...orderData]
-          .sort((a, b) => b.timestamp - a.timestamp)
-          .map((order) => (
-            <OrderCard key={`order-card-${order.orderId}`} orderData={order} />
-          ))}
+        {orderData.length > 0
+          ? [...orderData]
+              .sort((a, b) => b.timestamp - a.timestamp)
+              .map((order) => (
+                <OrderCard
+                  key={`order-card-${order.orderId}`}
+                  orderData={order}
+                />
+              ))
+          : !isLoading && (
+              <h3 className="text-grey-md" style={{ padding: "1.6rem" }}>
+                No orders yet
+              </h3>
+            )}
       </div>
     </React.Fragment>
   );
