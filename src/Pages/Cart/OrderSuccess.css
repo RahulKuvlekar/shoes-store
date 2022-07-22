@@ -1,0 +1,23 @@
+.confirmOrder-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  box-shadow: rgb(9 30 66 / 13%) 0px 0.5px 0.5px, #091e4221 0px 0px 0.5px 0.5px;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+.confirmOrder-section .paymentSuccess-img {
+  width: 100px;
+}
+.confirmOrder-section .text-success {
+  color: var(--success-color);
+}
+.confirmOrder-section h2,
+.confirmOrder-section h3,
+.confirmOrder-section h4 {
+  margin: 0.5rem 0;
+}
