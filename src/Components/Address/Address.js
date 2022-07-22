@@ -1,42 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "../UI/Modal/Modal";
 import "./Address.css";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../Config/InitFirebase";
-import { ADD_TOAST, SHOES_STORE_USER, WARNING } from "../../Constant/constant";
 import { useAuthContext } from "../../Hooks/useAuthContext";
-import { useToastContext } from "../../Hooks/useToastContext";
-import { createToast } from "../../Utils/toast";
 import SelectAddress from "./SelectAddress";
 
 const Address = () => {
-  const { userInfo, userAddress, setUserAddress } = useAuthContext();
-  const { dispatchToast } = useToastContext();
+  const { userAddress } = useAuthContext();
   const [selectAddressModal, setSelectAddressModal] = useState(false);
 
   const selectedAddress = userAddress.find(
     (address) => address.isSelected === true
-  );
-
-  useEffect(
-    () => {
-      (async () => {
-        try {
-          const docRef = doc(db, SHOES_STORE_USER, userInfo.uid);
-          const dataRef = await getDoc(docRef);
-          if (dataRef.exists()) {
-            setUserAddress(dataRef.data().myAddress);
-          }
-        } catch (error) {
-          dispatchToast({
-            type: ADD_TOAST,
-            payload: createToast(WARNING, error.message),
-          });
-        }
-      })();
-    },
-    // eslint-disable-next-line
-    []
   );
 
   return (
@@ -71,20 +44,6 @@ const Address = () => {
             <SelectAddress onClose={() => setSelectAddressModal(false)} />
           </div>
         </div>
-        {/* <div className="modal-btns">
-          <button
-            className="btn btn-primary"
-            //   onClick={submitHandler}
-          >
-            Save
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={() => setSelectAddressModal(false)}
-          >
-            Cancel
-          </button>
-        </div> */}
       </Modal>
     </div>
   );
