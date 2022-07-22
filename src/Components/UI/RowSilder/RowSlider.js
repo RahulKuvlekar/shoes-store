@@ -1,13 +1,7 @@
 // import { useRef } from "react";
 import "./RowSlider.css";
-import { useNavigate } from "react-router-dom";
 
-const RowSlider = ({ title, data, card }) => {
-  const cardHandler = (e, data) => {
-    navigate("/products");
-  };
-  const navigate = useNavigate();
-
+const RowSlider = ({ title, data, card, onClick }) => {
   // const sliderRef = useRef();
   // const isActive = useRef(false);
   // let startPosition;
@@ -48,7 +42,7 @@ const RowSlider = ({ title, data, card }) => {
             <div
               key={`${name}-Row-Slider`}
               className="row-slider-wrapper"
-              onClick={(e) => cardHandler(e, name)}
+              onClick={(event) => onClick(event, name)}
             >
               <img src={img} alt="" className="row-slider-img" />
             </div>
