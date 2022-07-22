@@ -116,6 +116,10 @@ const Signup = () => {
           email: currentUser?.user?.email,
           photoURL: currentUser?.user?.photoURL,
           phoneNumber: currentUser?.user?.phoneNumber,
+          myCart: {},
+          myWishlist: {},
+          myAddress: [],
+          myOrder: [],
         });
       }
     } catch (error) {
