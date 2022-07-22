@@ -124,6 +124,7 @@
   margin: auto;
   font-weight: 600;
   color: var(--grey-color-light);
+  position: relative;
 }
 .nav-bar .nav-icon-btn .nav-icon i,
 .nav-bar .nav-icon-btn .nav-icon svg {
@@ -131,6 +132,24 @@
 }
 .nav-bar .nav-icon-btn .nav-icon-text {
   font-size: 0.5rem;
+}
+
+.nav-bar .nav-icon-btn.nav-badge {
+  position: relative;
+}
+.nav-bar .nav-icon-btn.nav-badge::before {
+  content: attr(data-count);
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--danger-color);
+  color: #ffffff;
 }
 
 /* Nav - Search Bar */
