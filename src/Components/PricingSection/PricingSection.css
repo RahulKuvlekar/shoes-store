@@ -48,6 +48,45 @@
 .modal-btns button {
   min-width: 100px;
 }
+.coupon-section {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+.coupon-section h4 {
+  display: inline-flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.coupon-section button.btn {
+  padding: 0.4rem 0.6rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.list .coupon-tag {
+  padding: 1rem;
+  border: 1px var(--grey-color-dark) dashed;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+.list .coupon-tag.invalid-coupon {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.coupon-discount-title {
+  display: flex;
+  flex-flow: row;
+  gap: 0.5rem;
+}
+.coupon-discount-title svg {
+  color: var(--danger-color);
+  cursor: pointer;
+}
 
 /* Responsiveness */
 @media all and (max-width: 875px) {
