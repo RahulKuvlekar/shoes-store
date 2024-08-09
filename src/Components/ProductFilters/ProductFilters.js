@@ -17,6 +17,7 @@ import { categoryData } from "../../Utils/Data/categoryData";
 import { brandData } from "../../Utils/Data/brandData";
 import "./ProductFilters.css";
 import { useProductContext } from "../../Hooks/useProductContext";
+import { NumericFormat } from "react-number-format";
 
 const ProductFilters = () => {
   const { productState, dispatchProduct } = useProductContext();
@@ -74,8 +75,14 @@ const ProductFilters = () => {
           <div className="h4">Price Range</div>
           <div className="slider-container">
             <div className="output-section">
-              <span className="output-start">0</span>
-              <span className="output-end">{priceRange}</span>
+              <span className="output-start">₹0</span>
+              <NumericFormat
+                displayType="text"
+                value={priceRange}
+                thousandsGroupStyle="lakh"
+                thousandSeparator=","
+                prefix="₹"
+              />
             </div>
 
             <input

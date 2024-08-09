@@ -24,6 +24,7 @@ import RatingStar from "../../Components/RatingStar/RatingStar";
 import Skeleton from "../../Components/UI/Skeleton/Skeleton";
 import { useProductContext } from "../../Hooks/useProductContext";
 import { useAuthContext } from "../../Hooks/useAuthContext";
+import { NumericFormat } from "react-number-format";
 
 const ViewProduct = () => {
   const { productId } = useParams();
@@ -114,10 +115,25 @@ const ViewProduct = () => {
           <RatingStar rating={productData.rating} />
           <div className="viewProduct-priceSection">
             <span className="viewProduct-price-now">
-              ₹ {getDiscountedPrice(productData.price, productData.discount)}
+              <NumericFormat
+                displayType="text"
+                value={getDiscountedPrice(
+                  productData.price,
+                  productData.discount
+                )}
+                thousandsGroupStyle="lakh"
+                thousandSeparator=","
+                prefix="₹ "
+              />
             </span>
             <span className="viewProduct-price-before">
-              ₹{productData.price}
+              <NumericFormat
+                displayType="text"
+                value={productData.price}
+                thousandsGroupStyle="lakh"
+                thousandSeparator=","
+                prefix="₹ "
+              />
             </span>
             <span className="viewProduct-discount">
               ( {productData.discount}% OFF )

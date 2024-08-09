@@ -19,16 +19,17 @@ import { createToast } from "../../Utils/toast";
 import moment from "moment";
 import SmallLoader from "../UI/SmallLoader/SmallLoader";
 import { FaTags, FaTimes } from "react-icons/fa";
+import { NumericFormat } from "react-number-format";
 
 const couponsList = [
   {
-    name: "New Year Sale: ₹1000 off on orders above ₹15,000",
+    name: "New Year Sale: ₹1,000 off on orders above ₹15,000",
     value: 1000,
     id: 1,
     minValue: 15000,
   },
   {
-    name: "Clearance Sale: ₹5000 off on orders above ₹50,000",
+    name: "Clearance Sale: ₹5,000 off on orders above ₹50,000",
     value: 5000,
     id: 2,
     minValue: 50000,
@@ -205,7 +206,14 @@ const PricingSection = ({ setOrderStatus }) => {
             >
               <span>{title}</span>
               <span>
-                ₹{price} * {quantity}
+                <NumericFormat
+                  displayType="text"
+                  value={price}
+                  thousandsGroupStyle="lakh"
+                  thousandSeparator=","
+                  prefix="₹ "
+                />{" "}
+                * {quantity}
               </span>
             </li>
           ))}
@@ -216,19 +224,45 @@ const PricingSection = ({ setOrderStatus }) => {
       <ul className="list">
         <li className="price-list text-grey-md">
           <h4>Total MRP</h4>
-          <h4>₹ {TOTAL_PRICE.toFixed(2)}</h4>
+          <h4>
+            <NumericFormat
+              displayType="text"
+              value={TOTAL_PRICE.toFixed(2)}
+              thousandsGroupStyle="lakh"
+              thousandSeparator=","
+              prefix="₹ "
+            />
+          </h4>
         </li>
 
         <li className="price-list text-grey-md">
           <h4>Discount on MRP</h4>
-          <h4>- ₹ {TOTAL_DISCOUNT.toFixed(2)}</h4>
+          <h4>
+            <NumericFormat
+              displayType="text"
+              value={TOTAL_DISCOUNT.toFixed(2)}
+              thousandsGroupStyle="lakh"
+              thousandSeparator=","
+              prefix="- ₹ "
+            />
+          </h4>
         </li>
         <li className="price-list text-grey-md">
           <h4 className="coupon-discount-title">
             {couponValue > 0 && <FaTimes onClick={() => setCouponValue(0)} />}
             Coupon Discount
           </h4>
-          <h4>- ₹ {couponValue}</h4>
+          <h4>
+            {couponValue ? (
+              <NumericFormat
+                displayType="text"
+                value={couponValue}
+                thousandsGroupStyle="lakh"
+                thousandSeparator=","
+                prefix="- ₹ "
+              />
+            ) : "-"}
+          </h4>
         </li>
 
         <li className="price-list text-grey-md">
@@ -243,7 +277,15 @@ const PricingSection = ({ setOrderStatus }) => {
         <br />
         <div className="price-list">
           <span className="h3 text-grey-dk">Total Amount</span>
-          <span className="h3 text-grey-dk">₹ {FINAL_AMOUNT}</span>
+          <span className="h3 text-grey-dk">
+            <NumericFormat
+              displayType="text"
+              value={FINAL_AMOUNT}
+              thousandsGroupStyle="lakh"
+              thousandSeparator=","
+              prefix="₹ "
+            />
+          </span>
         </div>
       </ul>
       <br />
@@ -320,9 +362,8 @@ const PricingSection = ({ setOrderStatus }) => {
                 couponsList.map((coupon) => (
                   <li
                     key={`coupon-list-tag-${coupon.id}`}
-                    className={`list-collapsable coupon-tag ${
-                      FINAL_AMOUNT >= coupon.minValue ? "" : "invalid-coupon"
-                    }`}
+                    className={`list-collapsable coupon-tag ${FINAL_AMOUNT >= coupon.minValue ? "" : "invalid-coupon"
+                      }`}
                     onClick={() => setCouponValue(coupon.value)}
                   >
                     <input

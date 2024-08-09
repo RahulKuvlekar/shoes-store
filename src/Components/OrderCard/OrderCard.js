@@ -3,6 +3,7 @@ import React from "react";
 import "./OrderCard.css";
 import { v4 as uuid } from "uuid";
 import { getDiscountedPrice } from "../../Utils/products";
+import { NumericFormat } from "react-number-format";
 
 const OrderCard = ({ orderData }) => {
   return (
@@ -13,7 +14,14 @@ const OrderCard = ({ orderData }) => {
       </p>
       <h4 className="text-grey-md">Order Id:- #{orderData.orderId}</h4>
       <h4 className="text-grey-md">
-        Total :- ₹ {orderData.totalDiscountPrice}
+        Total :-
+        <NumericFormat
+          displayType="text"
+          value={orderData.totalDiscountPrice}
+          thousandsGroupStyle="lakh"
+          thousandSeparator=","
+          prefix=" ₹ "
+        />
       </h4>
       <h4 className="text-grey-md">Payment Mode :- {orderData.paymentMode}</h4>
       <div className="order-delivery">
@@ -47,9 +55,23 @@ const OrderCard = ({ orderData }) => {
                 Price:-
                 <div className="order-pricesection">
                   <span className="order-discountedPrice">
-                    ₹{getDiscountedPrice(product.price, product.discount)}
+                    <NumericFormat
+                      displayType="text"
+                      value={getDiscountedPrice(product.price, product.discount)}
+                      thousandsGroupStyle="lakh"
+                      thousandSeparator=","
+                      prefix="₹ "
+                    />
                   </span>
-                  <span className="order-price">₹{product.price}</span>
+                  <span className="order-price">
+                    <NumericFormat
+                      displayType="text"
+                      value={product.price}
+                      thousandsGroupStyle="lakh"
+                      thousandSeparator=","
+                      prefix="₹"
+                    />
+                  </span>
                   <span className="order-discount">
                     ( {product.discount}% )
                   </span>

@@ -8,6 +8,7 @@ import {
   updateMyCart,
 } from "../../Utils/products";
 import { useNavigate } from "react-router-dom";
+import { NumericFormat } from "react-number-format";
 
 const CartCard = ({ product }) => {
   const {
@@ -86,9 +87,25 @@ const CartCard = ({ product }) => {
 
         <div className="card-price">
           {price && (
-            <span className="price-now text-grey-dk">₹ {discountedPrice}</span>
+            <span className="price-now text-grey-dk">
+              <NumericFormat
+                displayType="text"
+                value={discountedPrice}
+                thousandsGroupStyle="lakh"
+                thousandSeparator=","
+                prefix="₹ "
+              />
+            </span>
           )}
-          <span className="price-before"> ₹{price} </span>
+          <span className="price-before">
+            <NumericFormat
+              displayType="text"
+              value={price}
+              thousandsGroupStyle="lakh"
+              thousandSeparator=","
+              prefix="₹"
+            />
+          </span>
           {discount && (
             <span className="price-discount"> ({discount}% OFF) </span>
           )}

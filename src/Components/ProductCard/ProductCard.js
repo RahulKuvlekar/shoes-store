@@ -10,6 +10,7 @@ import {
   getDiscountedPrice,
   removeFromMyWishlist,
 } from "../../Utils/products";
+import { NumericFormat } from "react-number-format";
 
 const ProductCard = ({ product }) => {
   const {
@@ -117,12 +118,27 @@ const ProductCard = ({ product }) => {
         {subtitle && <p className="card-text">{subtitle.toUpperCase()}</p>}
         <div className="card-price">
           <span className="price-now">
-            ₹{" "}
-            {discountedPrice
-              ? discountedPrice
-              : getDiscountedPrice(price, discount)}
+            <NumericFormat
+              displayType="text"
+              value={
+                discountedPrice
+                  ? discountedPrice
+                  : getDiscountedPrice(price, discount)
+              }
+              thousandsGroupStyle="lakh"
+              thousandSeparator=","
+              prefix="₹ "
+            />
           </span>
-          <span className="price-before"> ₹{price} </span>
+          <span className="price-before">
+            <NumericFormat
+              displayType="text"
+              value={price}
+              thousandsGroupStyle="lakh"
+              thousandSeparator=","
+              prefix="₹ "
+            />
+          </span>
           {discount && (
             <span className="price-discount"> ({discount}% OFF) </span>
           )}
